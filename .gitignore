@@ -1,0 +1,11 @@
+# Build and development directories
+build/
+devel/
+install/
+logs/
+
+# Ignored file types
+*.so
+*.pyc
+*~
+.DS_Store
