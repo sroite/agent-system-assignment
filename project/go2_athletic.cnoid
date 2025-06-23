@@ -17,32 +17,30 @@ items:
       children:
         -
           id: 2
-          name: "Floor"
+          name: "go2_description"
           plugin: Body
           class: BodyItem
           is_checked: true
           data:
-            file: "../../choreonoid/ext/vnoid/model/field2022/field2022_shorttrack.body"
-            format: CHOREONOID-BODY
-            rootPosition: [ 0, 0, 0 ]
+            file: "${HOME}/genesis_ws/Genesis/genesis/assets/urdf/go2/urdf/go2.urdf"
+            format: URDF
+            rootPosition: [ 0, 0, 0.39 ]
             rootAttitude: [
               1, 0, 0,
               0, 1, 0,
               0, 0, 1 ]
             jointDisplacements: [
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 0, 0, 0 ]
-            initialRootPosition: [ 0, 0, 0 ]
+              0, 30.0418, -70, 0, 30, -70, 0, 30, -70, 0,
+              30, -70 ]
+            initialRootPosition: [ 0, 0, 0.39 ]
             initialRootAttitude: [
               1, 0, 0,
               0, 1, 0,
               0, 0, 1 ]
-            fix_root: true
+            fix_root: false
             collisionDetection: true
             selfCollisionDetection: false
-            lock_location: true
+            lock_location: false
             scene_sensitive: true
             zmp: [ 0, 0, 0 ]
           children:
@@ -54,7 +52,7 @@ items:
               data:
                 isNoDelayMode: false
                 controllerOptions: ""
-                controller: "vnoid_shorttrack_controller"
+                controller: "Go2RosController"
                 base_directory: "Controller directory"
                 reloading: false
                 export_symbols: false
@@ -93,73 +91,40 @@ items:
           children:
             -
               id: 5
-              name: "GLVisionSimulator"
-              plugin: Body
-              class: GLVisionSimulatorItem
-              data:
-                enabled: true
-                max_frame_rate: 1000
-                max_latency: 1
-                record_vision_data: false
-                thread_mode: Sensor
-                best_effort: true
-                all_scene_objects: true
-                range_sensor_precision_ratio: 2
-                depth_error: 0
-                enable_head_light: true
-                enable_additional_lights: true
-                antialiasing: false
-            -
-              id: 6
               name: "WorldLogFile"
               plugin: Body
               class: WorldLogFileItem
               data:
-                file: "test_shorttrack"
+                file: "test_athletic"
                 format: CNOID-WORLD-LOG
                 timeStampSuffix: false
                 recordingFrameRate: 0
         -
-          id: 7
-          name: "go2_description"
+          id: 6
+          name: "HVAC2023_athletics_field"
           plugin: Body
           class: BodyItem
           is_checked: true
           data:
-            file: "${HOME}/genesis_ws/Genesis/genesis/assets/urdf/go2/urdf/go2.urdf"
-            format: URDF
-            rootPosition: [ 0, 0, 0.39 ]
+            file: "../../choreonoid/ext/vnoid/model/field2023/field2023_athletics.body"
+            format: CHOREONOID-BODY
+            rootPosition: [ 0, 0, 0 ]
             rootAttitude: [
               1, 0, 0,
               0, 1, 0,
               0, 0, 1 ]
-            jointDisplacements: [
-              0, 30.0418, -70, 0, 30, -70, 0, 30, -70, 0,
-              30, -70 ]
-            initialRootPosition: [ 0, 0, 0.39 ]
+            jointDisplacements: [ 0, 0, 0, 0, 0 ]
+            initialRootPosition: [ 0, 0, 0 ]
             initialRootAttitude: [
               1, 0, 0,
               0, 1, 0,
               0, 0, 1 ]
-            fix_root: false
+            fix_root: true
             collisionDetection: true
             selfCollisionDetection: false
             lock_location: false
             scene_sensitive: true
             zmp: [ 0, 0, 0 ]
-          children:
-            -
-              id: 8
-              name: "Go2RosController"
-              plugin: Body
-              class: SimpleControllerItem
-              data:
-                isNoDelayMode: false
-                controllerOptions: ""
-                controller: "Go2RosController"
-                base_directory: "Controller directory"
-                reloading: false
-                export_symbols: false
 views:
   -
     id: 0
@@ -172,7 +137,7 @@ views:
     class: ItemTreeView
     mounted: true
     state:
-      expanded: [ 1, 2, 3, 4, 7, 8 ]
+      expanded: [ 1, 2, 4 ]
   -
     id: 2
     plugin: Base
@@ -204,9 +169,9 @@ views:
         -
           camera: [ System, Perspective ]
           isCurrent: true
-          eye: [ -1.88468, -3.58085, 5.02465 ]
-          direction: [ 0.46688, 0.548091, -0.693988 ]
-          up: [ 0.450021, 0.528299, 0.719987 ]
+          eye: [ 0.256819, -11.493, 6.66784 ]
+          direction: [ 0.200696, 0.874644, -0.44127 ]
+          up: [ 0.0986893, 0.430093, 0.897374 ]
         -
           camera: [ System, Orthographic ]
           orthoHeight: 20
@@ -289,7 +254,7 @@ toolbars:
   "TimeBar":
     current_time: 0
     min_time: 0
-    max_time: 69.379
+    max_time: 30
     frame_rate: 1000
     playback_frame_rate: 60
     idle_loop_driven_mode: false
@@ -310,8 +275,8 @@ toolbars:
     lazyCollisionDetectionMode: true
 Body:
   "BodySelectionManager":
-    current_body_item: 7
-    current_link: "base"
+    current_body_item: 6
+    current_link: "Base"
   "KinematicFaultChecker":
     checkJointPositions: true
     angleMargin: 0
@@ -329,7 +294,7 @@ Body:
         show_cm_projection: false
         show_zmp: false
       -
-        body_item: 7
+        body_item: 6
         show_cm: false
         show_cm_projection: false
         show_zmp: false
